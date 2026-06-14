@@ -1,0 +1,17 @@
+name: PROD Pipeline
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+
+  placeholder:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: PROD pipeline placeholder
+        run: echo "PROD pipeline configured"
