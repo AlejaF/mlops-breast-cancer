@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import os
 
 from app.schemas import (
     PredictionRequest,
@@ -14,7 +15,10 @@ from app.inference import (
 )
 
 
-MODEL_NAME = "breast_cancer_v1.onnx"
+MODEL_NAME = os.getenv(
+    "MODEL_NAME",
+    "breast_cancer_v1.onnx"
+)
 
 session = load_model(
     MODEL_NAME
