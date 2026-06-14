@@ -14,10 +14,18 @@ from app.inference import (
     predict
 )
 
+from app.s3_utils import (
+    append_prediction_to_s3
+)
 
 MODEL_NAME = os.getenv(
     "MODEL_NAME",
     "breast_cancer_v1.onnx"
+)
+
+ENVIRONMENT = os.getenv(
+    "ENVIRONMENT",
+    "dev"
 )
 
 session = load_model(
@@ -104,6 +112,12 @@ def make_prediction(
     result = predict(
         session,
         request.features
+    )
+
+    append_prediction_to_s3(
+        environment=ENVIRONMENT,
+        prediction=result["prediction"],
+        label=result["label"]
     )
 
     return result
