@@ -36,7 +36,7 @@ session = load_model(
 app = FastAPI(
     title="Breast Cancer MLOps Platform",
     description="""
-    API para inferencia de cáncer de mama utilizando modelos ONNX.
+    Prueba de API para inferencia de cáncer de mama utilizando modelos ONNX.
 
     Ambientes soportados:
     - DEV
